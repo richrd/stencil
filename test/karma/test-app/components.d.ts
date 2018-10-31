@@ -311,6 +311,23 @@ export namespace Components {
   interface SlotLightDomContent {}
   interface SlotLightDomContentAttributes extends StencilHTMLAttributes {}
 
+  interface SlotDynamicList {
+    'items': Array<string>;
+  }
+  interface SlotDynamicListAttributes extends StencilHTMLAttributes {
+    'items'?: Array<string>;
+  }
+
+  interface SlotLightList {}
+  interface SlotLightListAttributes extends StencilHTMLAttributes {}
+
+  interface SlotListLightRoot {
+    'items': any;
+  }
+  interface SlotListLightRootAttributes extends StencilHTMLAttributes {
+    'items'?: any;
+  }
+
   interface SlotMapOrderRoot {}
   interface SlotMapOrderRootAttributes extends StencilHTMLAttributes {}
 
@@ -416,6 +433,9 @@ declare global {
     'SlotHtml': Components.SlotHtml;
     'SlotLightDomRoot': Components.SlotLightDomRoot;
     'SlotLightDomContent': Components.SlotLightDomContent;
+    'SlotDynamicList': Components.SlotDynamicList;
+    'SlotLightList': Components.SlotLightList;
+    'SlotListLightRoot': Components.SlotListLightRoot;
     'SlotMapOrderRoot': Components.SlotMapOrderRoot;
     'SlotMapOrder': Components.SlotMapOrder;
     'SlotReorderRoot': Components.SlotReorderRoot;
@@ -489,6 +509,9 @@ declare global {
     'slot-html': Components.SlotHtmlAttributes;
     'slot-light-dom-root': Components.SlotLightDomRootAttributes;
     'slot-light-dom-content': Components.SlotLightDomContentAttributes;
+    'slot-dynamic-list': Components.SlotDynamicListAttributes;
+    'slot-light-list': Components.SlotLightListAttributes;
+    'slot-list-light-root': Components.SlotListLightRootAttributes;
     'slot-map-order-root': Components.SlotMapOrderRootAttributes;
     'slot-map-order': Components.SlotMapOrderAttributes;
     'slot-reorder-root': Components.SlotReorderRootAttributes;
@@ -852,6 +875,24 @@ declare global {
     new (): HTMLSlotLightDomContentElement;
   };
 
+  interface HTMLSlotDynamicListElement extends Components.SlotDynamicList, HTMLStencilElement {}
+  var HTMLSlotDynamicListElement: {
+    prototype: HTMLSlotDynamicListElement;
+    new (): HTMLSlotDynamicListElement;
+  };
+
+  interface HTMLSlotLightListElement extends Components.SlotLightList, HTMLStencilElement {}
+  var HTMLSlotLightListElement: {
+    prototype: HTMLSlotLightListElement;
+    new (): HTMLSlotLightListElement;
+  };
+
+  interface HTMLSlotListLightRootElement extends Components.SlotListLightRoot, HTMLStencilElement {}
+  var HTMLSlotListLightRootElement: {
+    prototype: HTMLSlotListLightRootElement;
+    new (): HTMLSlotListLightRootElement;
+  };
+
   interface HTMLSlotMapOrderRootElement extends Components.SlotMapOrderRoot, HTMLStencilElement {}
   var HTMLSlotMapOrderRootElement: {
     prototype: HTMLSlotMapOrderRootElement;
@@ -983,6 +1024,9 @@ declare global {
     'slot-html': HTMLSlotHtmlElement
     'slot-light-dom-root': HTMLSlotLightDomRootElement
     'slot-light-dom-content': HTMLSlotLightDomContentElement
+    'slot-dynamic-list': HTMLSlotDynamicListElement
+    'slot-light-list': HTMLSlotLightListElement
+    'slot-list-light-root': HTMLSlotListLightRootElement
     'slot-map-order-root': HTMLSlotMapOrderRootElement
     'slot-map-order': HTMLSlotMapOrderElement
     'slot-reorder-root': HTMLSlotReorderRootElement
@@ -1056,6 +1100,9 @@ declare global {
     'slot-html': HTMLSlotHtmlElement;
     'slot-light-dom-root': HTMLSlotLightDomRootElement;
     'slot-light-dom-content': HTMLSlotLightDomContentElement;
+    'slot-dynamic-list': HTMLSlotDynamicListElement;
+    'slot-light-list': HTMLSlotLightListElement;
+    'slot-list-light-root': HTMLSlotListLightRootElement;
     'slot-map-order-root': HTMLSlotMapOrderRootElement;
     'slot-map-order': HTMLSlotMapOrderElement;
     'slot-reorder-root': HTMLSlotReorderRootElement;
