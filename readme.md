@@ -4,6 +4,33 @@
 [![BrowserStack Status][browserstack-badge]][browserstack-badge-url]
 [![license][npm-license]][npm-license-url]
 
+---
+
+# About this fork
+
+**TLDR** This fork fixes an issue where Stencil components fail to load properly due to the way Stencil tries to load it's asset files. This also allows you to load your component with the `async` and/or `defer` attributes in the script tag which previously didn't work at all.
+
+To make the fix work just add a `data-stencil-namespace` attribute to the script tag that includes your component with the value being the same as in your `stencil.config.js`. For example:
+
+    <script src="/path/to/mycomponent.js" data-stencil-namespace="mycomponent"></script>
+
+To set this up in your project just edit your package.json and replace the `@stencil/core` line with the following:
+
+    "@stencil/core": "git://github.com/richrd/stencil.git",
+    
+**Background**
+
+At least up to version 0.17.0 Stencil has some issues with loading scripts and assets from the correct url. Stencil builds components into multiple different files and optimizies what is sent to the browser by not sending unnecessary polyfills to modern browsers etc. The first script that is included is just a loader which figures out what needs to be loaded. In order to know where to load the files from the loader first tries to find the script tag and get the component url from there.
+
+Unfortunately the way stencil tries to find it's own script tag (and the correct asset url from there) is very brittle and doesn't work with async scripts. Ideally `document.currentScript` would be used, but that's not supported in all browsers (https://caniuse.com/#search=currentScript). Check out the fix and the old implementation here: [/src/client/loader.ts#L35](/src/client/loader.ts#L35)
+
+Some reports of this issue:
+- https://github.com/ionic-team/stencil/issues/793
+- https://github.com/ionic-team/stencil/issues/1030
+
+My initial findings: https://github.com/ionic-team/stencil/issues/705#issuecomment-457271822
+
+---
 
 # Stencil: A Compiler for Web Components and PWAs
 
