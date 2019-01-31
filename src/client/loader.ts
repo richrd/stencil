@@ -17,6 +17,7 @@ export function init(
 ) {
   // create global namespace if it doesn't already exist
   App = win[namespace] = win[namespace] || {};
+  console.log(namespace);
 
   if (cmpTags) {
     // auto hide components until they been fully hydrated
