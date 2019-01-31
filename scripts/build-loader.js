@@ -2,8 +2,6 @@ const fs = require('fs-extra');
 
 
 function buildLoader(inputLoaderFile, outputLoaderFile) {
-  console.log("buildLoader");
-  console.log(inputLoaderFile, "->", outputLoaderFile);
   let content = fs.readFileSync(inputLoaderFile, 'utf8');
 
   content = content.replace(/export function /g, 'function ');
