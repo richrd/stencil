@@ -33,13 +33,20 @@ export function init(
   resourcesUrl = resourcesUrl || App.resourcesUrl;
 
   // figure out the script element for this current script
-  y = doc.querySelectorAll('script');
-  for (x = y.length - 1; x >= 0; x--) {
-    scriptElm = y[x];
-    if (scriptElm.src || scriptElm.hasAttribute('data-resources-url')) {
-      break;
-    }
-  }
+  // y = doc.querySelectorAll('script');
+  // for (x = y.length - 1; x >= 0; x--) {
+  //   scriptElm = y[x];
+  //   if (scriptElm.src || scriptElm.hasAttribute('data-resources-url')) {
+  //     break;
+  //   }
+  // }
+
+  // the above is brittle and unreliable and doesn't support async script tags
+  // ideally we'd use document.currentScript but that's not supported in all browsers
+  // instead use an explicit data attribute identifier to find the right script tag
+  // more info: https://github.com/ionic-team/stencil/issues/1030
+  scriptElm = document.querySelector('script[data-stencil-namespace="' + namespace + '"]');
+
 
   // get the resource path attribute on this script element
   y = scriptElm.getAttribute('data-resources-url');
