@@ -18069,7 +18069,7 @@ function minifyCore(config, compilerCtx, sourceTarget, input) {
         }
         let cacheKey;
         if (compilerCtx) {
-            cacheKey = compilerCtx.cache.createKey('minifyCore', '190031134759', opts, input);
+            cacheKey = compilerCtx.cache.createKey('minifyCore', '190108154530', opts, input);
             const cachedContent = yield compilerCtx.cache.get(cacheKey);
             if (cachedContent != null) {
                 return {
@@ -25298,7 +25298,7 @@ class Compiler {
             config.logger.debug(`${details.platform}, ${details.cpuModel}, cpus: ${details.cpus}`);
             config.logger.debug(`${details.runtime} ${details.runtimeVersion}`);
             config.logger.debug(`compiler runtime: ${config.sys.compiler.runtime}`);
-            config.logger.debug(`compiler build: 190031134759`);
+            config.logger.debug(`compiler build: 190108154530`);
             const workerOpts = config.sys.initWorkers(config.maxConcurrentWorkers, config.maxConcurrentTasksPerWorker);
             config.logger.debug(`compiler workers: ${workerOpts.maxConcurrentWorkers}, tasks per worker: ${workerOpts.maxConcurrentTasksPerWorker}`);
             config.logger.debug(`minifyJs: ${config.minifyJs}, minifyCss: ${config.minifyCss}, buildEs5: ${config.buildEs5}`);
