@@ -47,6 +47,11 @@ export function init(
   // more info: https://github.com/ionic-team/stencil/issues/1030
   scriptElm = document.querySelector('script[data-stencil-namespace="' + namespace + '"]');
 
+  // As a fallback we try to find a script tag by its src attribute
+  if (!scriptElm) {
+    scriptElm = document.querySelector('script[src*="' + namespace + '"]');
+  }
+
 
   // get the resource path attribute on this script element
   y = scriptElm.getAttribute('data-resources-url');
