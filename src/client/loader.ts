@@ -41,13 +41,19 @@ export function init(
   //   }
   // }
 
-  // the above is brittle and unreliable and doesn't support async script tags
-  // ideally we'd use document.currentScript but that's not supported in all browsers
-  // instead use an explicit data attribute identifier to find the right script tag
-  // more info: https://github.com/ionic-team/stencil/issues/1030
-  scriptElm = document.querySelector('script[data-stencil-namespace="' + namespace + '"]');
+  // The above is brittle and unreliable and doesn't support async script tags.
+  // Ideally we'd just use document.currentScript but that's not supported in
+  // all browsers. If currentScript is unavailable we use an explicit data
+  // attribute identifier to find the right script tag.
+  // More info: https://github.com/ionic-team/stencil/issues/1030
+  scriptElm = document.currentScript;
 
-  // As a fallback we try to find a script tag by its src attribute
+  // As the first fallback we try to find a script tag by its data attribute
+  if (!scriptElm) {
+    scriptElm = document.querySelector('script[data-stencil-namespace="' + namespace + '"]');
+  }
+
+  // If both of the above fail we try to find a script tag by its src attribute
   if (!scriptElm) {
     scriptElm = document.querySelector('script[src*="' + namespace + '"]');
   }
